@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace InventarioBibliotecaUmizumi
 {
-    public partial class Form1 : Form
+    public partial class FormLogin : Form
     {
-        public Form1()
+        public FormLogin()
         {
             InitializeComponent();
         }
@@ -32,5 +32,7 @@ namespace InventarioBibliotecaUmizumi
                 MessageBox.Show("❌ Error de conexión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
     }
 }
