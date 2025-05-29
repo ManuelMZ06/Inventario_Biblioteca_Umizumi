@@ -1,7 +1,9 @@
-﻿using System;
+﻿using InventarioBibliotecaUmizumi.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,20 @@ namespace InventarioBibliotecaUmizumi
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void btnConexion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conexion = Conexion.ObtenerConexion();
+                MessageBox.Show("✅ Conexión exitosa a la base de datos.", "Conexión OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Conexion.CerrarConexion(conexion);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Error de conexión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
