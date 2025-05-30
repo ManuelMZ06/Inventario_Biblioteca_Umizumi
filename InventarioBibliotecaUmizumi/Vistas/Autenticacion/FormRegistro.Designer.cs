@@ -37,7 +37,7 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnIngresar = new System.Windows.Forms.Button();
-            this.LinkRegistrar = new System.Windows.Forms.LinkLabel();
+            this.LinkLogin = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -122,25 +122,27 @@
             this.btnIngresar.Name = "btnIngresar";
             this.btnIngresar.Size = new System.Drawing.Size(173, 29);
             this.btnIngresar.TabIndex = 3;
-            this.btnIngresar.Text = "Ingresar";
+            this.btnIngresar.Text = "Registrar";
             this.btnIngresar.UseVisualStyleBackColor = true;
+            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
-            // LinkRegistrar
+            // LinkLogin
             // 
-            this.LinkRegistrar.AutoSize = true;
-            this.LinkRegistrar.Location = new System.Drawing.Point(80, 410);
-            this.LinkRegistrar.Name = "LinkRegistrar";
-            this.LinkRegistrar.Size = new System.Drawing.Size(150, 13);
-            this.LinkRegistrar.TabIndex = 4;
-            this.LinkRegistrar.TabStop = true;
-            this.LinkRegistrar.Text = "¿ no tienes cuenta registrate ?";
+            this.LinkLogin.AutoSize = true;
+            this.LinkLogin.Location = new System.Drawing.Point(80, 410);
+            this.LinkLogin.Name = "LinkLogin";
+            this.LinkLogin.Size = new System.Drawing.Size(153, 13);
+            this.LinkLogin.TabIndex = 4;
+            this.LinkLogin.TabStop = true;
+            this.LinkLogin.Text = "Ya tieens cuenta  inicia sesion ";
+            this.LinkLogin.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkRegistrar_LinkClicked);
             // 
             // FormRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(308, 462);
-            this.Controls.Add(this.LinkRegistrar);
+            this.Controls.Add(this.LinkLogin);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.groupBox1);
@@ -167,6 +169,6 @@
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Button btnIngresar;
-        private System.Windows.Forms.LinkLabel LinkRegistrar;
+        private System.Windows.Forms.LinkLabel LinkLogin;
     }
 }

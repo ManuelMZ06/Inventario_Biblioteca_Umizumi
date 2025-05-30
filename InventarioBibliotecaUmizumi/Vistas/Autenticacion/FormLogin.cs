@@ -1,4 +1,7 @@
-﻿using InventarioBibliotecaUmizumi.Modelo;
+﻿using InventarioBibliotecaUmizumi.Controlador;
+using InventarioBibliotecaUmizumi.Modelo;
+using InventarioBibliotecaUmizumi.Vistas.Autenticacion;
+using InventarioBibliotecaUmizumi.Vistas.dashboard;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace InventarioBibliotecaUmizumi
 {
     public partial class FormLogin : Form
@@ -19,20 +23,40 @@ namespace InventarioBibliotecaUmizumi
             InitializeComponent();
         }
 
-        private void btnConexion_Click(object sender, EventArgs e)
+        private void LinkRegistrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            try
-            {
-                SqlConnection conexion = Conexion.ObtenerConexion();
-                MessageBox.Show("✅ Conexión exitosa a la base de datos.", "Conexión OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Conexion.CerrarConexion(conexion);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("❌ Error de conexión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            this.Hide();
+            FormRegistro formregistro = new FormRegistro();
+            formregistro.ShowDialog();
         }
 
-       
+        private void btnIngresar_Click(object sender, EventArgs e)
+        {
+            string usuario = txtusuario.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Por favor llena todos los campos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            bool esValido = UsuarioController.ValidarLogin(usuario, password);
+
+            if (esValido)
+            {
+                MessageBox.Show("✅ Bienvenido, acceso concedido.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // TODO: Redireccionar al Dashboard o formulario principal
+                this.Hide();
+                Dashboard tableroPrincipal = new Dashboard();
+                tableroPrincipal.ShowDialog();
+               
+            }
+            else
+            {
+                MessageBox.Show("❌ Usuario o contraseña incorrectos.", "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
